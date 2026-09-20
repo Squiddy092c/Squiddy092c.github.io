@@ -1,1 +1,231 @@
-# Squiddy092c.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squiddy092c - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Theme and Background Grid */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050a07;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 600px;
+            background: radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        header {
+            margin-bottom: 4rem;
+        }
+
+        .role {
+            color: #4ade80;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -0.03em;
+        }
+
+        .bio {
+            color: #a1a1aa;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .stat-item h2 {
+            color: #4ade80;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-item p {
+            color: #a1a1aa;
+            font-size: 0.85rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2.5rem;
+            border-left: 1px solid #27272a;
+        }
+
+        .timeline-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        .dot {
+            position: absolute;
+            left: -5px; 
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .date {
+            color: #a1a1aa;
+            font-size: 0.85rem;
+        }
+
+        .skills {
+            color: #4ade80;
+            font-size: 0.85rem;
+            margin: 0.5rem 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .timeline-item ul {
+            color: #a1a1aa;
+            margin: 0;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+        
+        .timeline-item li::marker {
+            color: #52525b;
+        }
+
+        @media (max-width: 640px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 1rem;
+            }
+            .name {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header & Bio -->
+        <header>
+            <div class="role">Roblox Programmer &middot; Game Designer</div>
+            <h1 class="name">Squiddy092c</h1>
+            <p class="bio">Full Stack Roblox developer shipping high-quality games and writing performant Luau code. 5+ years on the platform, always experimenting with new tooling and AI-assisted development pipelines.</p>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats">
+            <div class="stat-item">
+                <h2>100M+</h2>
+                <p>Total game visits</p>
+            </div>
+            <div class="stat-item">
+                <h2>16+</h2>
+                <p>Project credits</p>
+            </div>
+            <div class="stat-item">
+                <h2>5</h2>
+                <p>Years on platform</p>
+            </div>
+            <div class="stat-item">
+                <h2>2</h2>
+                <p>Years professional</p>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="experience">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <div class="timeline-header">
+                        <h3>Independent Developer</h3>
+                        <span class="date">2026 - Present</span>
+                    </div>
+                    <div class="skills">Programming, Building, UI Design</div>
+                    <ul>
+                        <li>Started working on personal projects and shipped multiple of them.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
