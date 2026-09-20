@@ -4,105 +4,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Squiddy092c - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Using Inter font for a clean, modern aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Theme and Background Grid */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #050a07;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            font-family: 'Inter', sans-serif;
-            color: #ffffff;
-            min-height: 100vh;
+        :root {
+            --accent: #ef4444; /* Vibrant Red */
+            --accent-glow: rgba(239, 68, 68, 0.15);
+            --bg-color: #09090b; /* Near black */
+            --card-bg: #121214; /* Slightly lighter than background */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #27272a;
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Unique dotted background instead of a grid */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Top radial red glow */
         body::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; height: 600px;
-            background: radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+            top: 0; left: 0; right: 0; height: 700px;
+            background: radial-gradient(ellipse at 50% 0%, var(--accent-glow) 0%, transparent 60%);
             z-index: -1;
             pointer-events: none;
         }
 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-contact {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--accent) !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .btn-contact:hover {
+            border-color: var(--accent);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
         .container {
-            max-width: 760px;
+            max-width: 1000px; /* Slightly wider container */
             margin: 0 auto;
             padding: 6rem 2rem;
         }
 
+        /* Centered Hero to make it visually distinct from the original */
         header {
-            margin-bottom: 4rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .role {
-            color: #4ade80;
+            color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 50px;
         }
 
         .name {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin: 0 0 1.5rem 0;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
         }
 
         .bio {
-            color: #a1a1aa;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            justify-content: center;
             gap: 2rem;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
+            flex-wrap: wrap;
         }
 
-        .stat-item h2 {
-            color: #4ade80;
-            font-size: 2.25rem;
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.05);
+        }
+
+        .stat-card h2 {
+            color: var(--text-main);
+            font-size: 2.5rem;
             font-weight: 700;
             margin: 0 0 0.5rem 0;
             letter-spacing: -0.02em;
         }
 
-        .stat-item p {
-            color: #a1a1aa;
-            font-size: 0.85rem;
+        .stat-card p {
+            color: var(--accent);
+            font-size: 0.9rem;
             margin: 0;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
+        }
+        
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1rem;
+        }
+
+        .experience-section {
+            margin-bottom: 6rem;
         }
 
         .timeline {
             display: flex;
             flex-direction: column;
+            margin-top: 2rem;
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 2rem;
-            padding-bottom: 2.5rem;
-            border-left: 1px solid #27272a;
+            padding-left: 2.5rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid var(--border-color);
         }
 
         .timeline-item:last-child {
@@ -112,64 +229,117 @@
 
         .dot {
             position: absolute;
-            left: -5px; 
-            top: 6px;
-            width: 9px;
-            height: 9px;
-            background: #4ade80;
+            left: -7px; 
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
         }
 
         .timeline-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .timeline-header h3 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             margin: 0;
         }
 
         .date {
-            color: #a1a1aa;
+            color: var(--text-muted);
             font-size: 0.85rem;
+            background: rgba(255,255,255,0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
         }
 
         .skills {
-            color: #4ade80;
+            color: var(--accent);
             font-size: 0.85rem;
-            margin: 0.5rem 0 1rem 0;
+            margin: 0 0 1rem 0;
             font-weight: 500;
         }
 
         .timeline-item ul {
-            color: #a1a1aa;
+            color: var(--text-muted);
             margin: 0;
-            padding-left: 1.25rem;
+            padding-left: 1rem;
             font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         .timeline-item li {
             margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
         }
         
         .timeline-item li::marker {
-            color: #52525b;
+            color: var(--accent);
         }
 
-        @media (max-width: 640px) {
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem 1rem;
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .showcase-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .showcase-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-4px);
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+            /* Simulated video placeholder look */
+            background-color: #1a1a1a; 
+            display: block;
+        }
+
+        .showcase-content {
+            padding: 1.5rem;
+        }
+
+        .showcase-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .showcase-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be replaced with a hamburger menu later if needed */
             }
             .name {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+            .stats {
+                flex-direction: column;
+            }
+            .stat-card {
+                max-width: 100%;
             }
             .container {
                 padding: 4rem 1.5rem;
@@ -179,37 +349,44 @@
 </head>
 <body>
 
+    <nav>
+        <div class="logo">Squiddy092c<span>.</span></div>
+        <div class="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#games">Games</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact" class="btn-contact">Contact</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- Header & Bio -->
         <header>
             <div class="role">Roblox Programmer &middot; Game Designer</div>
             <h1 class="name">Squiddy092c</h1>
             <p class="bio">Full Stack Roblox developer shipping high-quality games and writing performant Luau code. 5+ years on the platform, always experimenting with new tooling and AI-assisted development pipelines.</p>
         </header>
 
-        <!-- Statistics -->
-        <section class="stats">
-            <div class="stat-item">
+        <!-- Removed "Project credits", kept the other 3 and styled as distinct cards -->
+        <section class="stats" id="skills">
+            <div class="stat-card">
                 <h2>100M+</h2>
                 <p>Total game visits</p>
             </div>
-            <div class="stat-item">
-                <h2>16+</h2>
-                <p>Project credits</p>
-            </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <h2>5</h2>
                 <p>Years on platform</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <h2>2</h2>
                 <p>Years professional</p>
             </div>
         </section>
 
-        <!-- Experience Timeline -->
-        <section class="experience">
-            <h2 class="section-title">Experience</h2>
+        <section class="experience-section" id="experience">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+            </div>
             
             <div class="timeline">
                 <div class="timeline-item">
@@ -222,6 +399,43 @@
                     <ul>
                         <li>Started working on personal projects and shipped multiple of them.</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase-section" id="showcase">
+            <div class="section-header">
+                <h2 class="section-title">Systems & Showcases</h2>
+                <p class="section-desc">Frameworks and systems I've built over the years, with video demos. I scripted these projects — assets, animations and VFX are not mine unless stated otherwise.</p>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- Card 1 -->
+                <div class="showcase-card">
+                    <!-- Using Placehold.co for image placeholders mimicking the video thumbnails -->
+                    <img src="https://placehold.co/600x340/1a1a1a/ef4444?text=Pirate+Fleet+Attack" alt="Pirate Fleet Attack Thumbnail" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Pirate Fleet Attack</h3>
+                        <p class="showcase-desc">Space combat: pilot a ship against an attacking pirate fleet. Ship flight, weapons and enemy fleet AI all scripted by me.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="showcase-card">
+                    <img src="https://placehold.co/600x340/1a1a1a/ef4444?text=Sword+Mech" alt="Sword Mech Thumbnail" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Sword Mech</h3>
+                        <p class="showcase-desc">Piloted mech with sword-based melee combat, movement rig and hit detection scripted by me.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="showcase-card">
+                    <img src="https://placehold.co/600x340/1a1a1a/ef4444?text=Combat+Tank" alt="Combat Tank Thumbnail" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Combat Tank</h3>
+                        <p class="showcase-desc">A fully functional tank with a custom physics-based rig that simulates tank-like movement. Includes a working cannon and turret, and can be destroyed.</p>
+                    </div>
                 </div>
             </div>
         </section>
